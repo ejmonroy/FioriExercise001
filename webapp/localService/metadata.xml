@@ -1,0 +1,84 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZFIORI_SAMPLE_GPT_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="Ricef" sap:content-version="1">
+				<Key><PropertyRef Name="RicefId"/></Key><Property Name="RicefId" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="RICEF Identifier" sap:creatable="false"
+					sap:updatable="false"/><Property Name="ParamCount" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Parameter Count" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ActiveCount" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Active Count" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ToParameterSet" Relationship="ZFIORI_SAMPLE_GPT_SRV.RicefParameter" FromRole="FromRole_RicefParameter"
+					ToRole="ToRole_RicefParameter"/><NavigationProperty Name="ToLogicSet" Relationship="ZFIORI_SAMPLE_GPT_SRV.RicefLogic" FromRole="FromRole_RicefLogic"
+					ToRole="ToRole_RicefLogic"/></EntityType>
+			<EntityType Name="Parameter" sap:content-version="1">
+				<Key><PropertyRef Name="RicefId"/><PropertyRef Name="Identifier"/><PropertyRef Name="ProgramId"/><PropertyRef Name="Country"/></Key><Property Name="RicefId" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="RICEF Identifier" sap:creatable="false"
+					sap:updatable="false"/><Property Name="Identifier" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Unique Identifier" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ProgramId" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Program Name" sap:creatable="false"
+					sap:updatable="false"/><Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" sap:creatable="false" sap:updatable="false"/><Property Name="LogId" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Logic Identifier" sap:creatable="false"
+					sap:updatable="false"/><Property Name="LogDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Logic Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Fname" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Field Name" sap:creatable="false" sap:updatable="false"/><Property Name="Fioty" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Input/Output" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Fopti" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Operand" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="FvalLow" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Value From" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FvalHigh" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Value To" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Active" Type="Edm.Boolean" Nullable="false" sap:label="Active" sap:creatable="false" sap:updatable="false"/><Property Name="ChangedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Last Changed By" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="ChangedDate" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Last Changed On" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="ChangedTime" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Last Changed At" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><NavigationProperty Name="ToProgram" Relationship="ZFIORI_SAMPLE_GPT_SRV.ProgramParameter" FromRole="ToRole_ProgramParameter"
+					ToRole="FromRole_ProgramParameter"/><NavigationProperty Name="ToRicef" Relationship="ZFIORI_SAMPLE_GPT_SRV.RicefParameter" FromRole="ToRole_RicefParameter"
+					ToRole="FromRole_RicefParameter"/><NavigationProperty Name="ToLogic" Relationship="ZFIORI_SAMPLE_GPT_SRV.LogicParameter" FromRole="ToRole_LogicParameter"
+					ToRole="FromRole_LogicParameter"/></EntityType>
+			<EntityType Name="Program" sap:content-version="1">
+				<Key><PropertyRef Name="ProgramId"/></Key><Property Name="ProgramId" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Program Name" sap:creatable="false"
+					sap:updatable="false"/><Property Name="DevClass" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Development Class" sap:creatable="false"
+					sap:updatable="false"/><Property Name="LastChangedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Last Changed By" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="LastChangedOn" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Last Changed On" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="LastTransport" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Request/Task" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><NavigationProperty Name="ToParameterSet" Relationship="ZFIORI_SAMPLE_GPT_SRV.ProgramParameter" FromRole="FromRole_ProgramParameter"
+					ToRole="ToRole_ProgramParameter"/></EntityType>
+			<EntityType Name="Logic" sap:content-version="1">
+				<Key><PropertyRef Name="RicefId"/><PropertyRef Name="LogId"/></Key><Property Name="RicefId" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="RICEF Identifier" sap:creatable="false"
+					sap:updatable="false"/><Property Name="LogId" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Logic Identifier" sap:creatable="false"
+					sap:updatable="false"/><Property Name="LogDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Logic Description" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ParamCount" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Parameter Count" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ActiveCount" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Active Count" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="ToRicef" Relationship="ZFIORI_SAMPLE_GPT_SRV.RicefLogic" FromRole="ToRole_RicefLogic" ToRole="FromRole_RicefLogic"/><NavigationProperty Name="ToParameterSet" Relationship="ZFIORI_SAMPLE_GPT_SRV.LogicParameter" FromRole="FromRole_LogicParameter"
+					ToRole="ToRole_LogicParameter"/></EntityType>
+			<Association Name="LogicParameter" sap:content-version="1" sap:label="Logical Grouping"><End Type="ZFIORI_SAMPLE_GPT_SRV.Logic" Multiplicity="1" Role="FromRole_LogicParameter"/><End Type="ZFIORI_SAMPLE_GPT_SRV.Parameter" Multiplicity="*" Role="ToRole_LogicParameter"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_LogicParameter"><PropertyRef Name="RicefId"/><PropertyRef Name="LogId"/></Principal>
+					<Dependent Role="ToRole_LogicParameter"><PropertyRef Name="RicefId"/><PropertyRef Name="LogId"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ProgramParameter" sap:content-version="1" sap:label="Program Usage"><End Type="ZFIORI_SAMPLE_GPT_SRV.Program" Multiplicity="0..1" Role="FromRole_ProgramParameter"/><End Type="ZFIORI_SAMPLE_GPT_SRV.Parameter" Multiplicity="*" Role="ToRole_ProgramParameter"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ProgramParameter"><PropertyRef Name="ProgramId"/></Principal>
+					<Dependent Role="ToRole_ProgramParameter"><PropertyRef Name="ProgramId"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="RicefLogic" sap:content-version="1" sap:label="Ricef Logic"><End Type="ZFIORI_SAMPLE_GPT_SRV.Ricef" Multiplicity="1" Role="FromRole_RicefLogic"/><End Type="ZFIORI_SAMPLE_GPT_SRV.Logic" Multiplicity="*" Role="ToRole_RicefLogic"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_RicefLogic"><PropertyRef Name="RicefId"/></Principal>
+					<Dependent Role="ToRole_RicefLogic"><PropertyRef Name="RicefId"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="RicefParameter" sap:content-version="1" sap:label="Ricef Mapping"><End Type="ZFIORI_SAMPLE_GPT_SRV.Ricef" Multiplicity="1" Role="FromRole_RicefParameter"/><End Type="ZFIORI_SAMPLE_GPT_SRV.Parameter" Multiplicity="*" Role="ToRole_RicefParameter"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_RicefParameter"><PropertyRef Name="RicefId"/></Principal>
+					<Dependent Role="ToRole_RicefParameter"><PropertyRef Name="RicefId"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZFIORI_SAMPLE_GPT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="RicefSet" EntityType="ZFIORI_SAMPLE_GPT_SRV.Ricef" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="ParameterSet" EntityType="ZFIORI_SAMPLE_GPT_SRV.Parameter" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ProgramSet" EntityType="ZFIORI_SAMPLE_GPT_SRV.Program" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="LogicSet" EntityType="ZFIORI_SAMPLE_GPT_SRV.Logic" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="RicefParameterSet" Association="ZFIORI_SAMPLE_GPT_SRV.RicefParameter" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="RicefSet" Role="FromRole_RicefParameter"/><End EntitySet="ParameterSet" Role="ToRole_RicefParameter"/></AssociationSet>
+				<AssociationSet Name="RicefLogicSet" Association="ZFIORI_SAMPLE_GPT_SRV.RicefLogic" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="RicefSet" Role="FromRole_RicefLogic"/><End EntitySet="LogicSet" Role="ToRole_RicefLogic"/></AssociationSet>
+				<AssociationSet Name="LogicParameterSet" Association="ZFIORI_SAMPLE_GPT_SRV.LogicParameter" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="LogicSet" Role="FromRole_LogicParameter"/><End EntitySet="ParameterSet" Role="ToRole_LogicParameter"/></AssociationSet>
+				<AssociationSet Name="ProgramParameterSet" Association="ZFIORI_SAMPLE_GPT_SRV.ProgramParameter" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="ProgramSet" Role="FromRole_ProgramParameter"/><End EntitySet="ParameterSet" Role="ToRole_ProgramParameter"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZFIORI_SAMPLE_GPT_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZFIORI_SAMPLE_GPT_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

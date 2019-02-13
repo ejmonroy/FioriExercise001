@@ -1,0 +1,48 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" controllerName="df.com.training.FioriExercise01.controller.Object">
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false" busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
+		<semantic:titleHeading>
+			<Title text="{LogDesc} ({LogId})"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<ObjectNumber number="{ActiveCount} out of {ParamCount}" unit="Parameters" state="{=${ActiveCount} === '000'? 'None':'Success'}"/>
+		</semantic:headerContent>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:content>
+			<!--<Table xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" noDataText="Drop column list items here and columns in the area above" items="{objectView>/ParameterSet}" id="table0" cd:w5g.dt.context="/LogicSet/ToParameterSet" class="sapUiNoContentPadding" headerText="{i18n>objectTableHeaderText}" busy="{objectView>/tableBusy}">-->
+			<!--	<items>-->
+			<!--		<ColumnListItem type="Active" id="item0">-->
+			<!--			<cells>-->
+			<!--				<ObjectIdentifier xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns="sap.m" text="{objectView>Identifier}" id="identifier0" title="{objectView>RicefId}" titleActive="true"/>-->
+			<!--				<Text text="{objectView>ProgramId}" id="text1"/>-->
+			<!--				<Text id="text2" text="{objectView>Country}"/>-->
+			<!--				<ObjectStatus xmlns="sap.m" text="{=${objectView>Active}?${i18n>objectStatusActive}:${i18n>objectStatusInactive}}" state="{=${objectView>Active}?'Success':'Error'}" id="status0"/></cells>-->
+			<!--		</ColumnListItem>-->
+			<!--	</items>-->
+			<!--	<columns>-->
+			<!--		<Column id="column0">-->
+			<!--			<header>-->
+			<!--				<Label text="{/#Parameter/Identifier/@sap:label}" id="label0"/>-->
+			<!--			</header>-->
+			<!--		</Column>-->
+			<!--		<Column id="column1">-->
+			<!--			<header>-->
+			<!--				<Label text="{/#Parameter/ProgramId/@sap:label}" id="label1"/>-->
+			<!--			</header>-->
+			<!--		</Column>-->
+			<!--		<Column id="column2">-->
+			<!--			<header>-->
+			<!--				<Label text="{/#Parameter/Country/@sap:label}" id="label2"/>-->
+			<!--			</header>-->
+			<!--		</Column>-->
+			<!--		<Column id="column0_1549613928653">-->
+			<!--			<header>-->
+			<!--				<Text text="{/#Parameter/Active/@sap:label}" id="text0_1549613928652"/>-->
+			<!--			</header>-->
+			<!--		</Column>-->
+			<!--	</columns>-->
+			<!--</Table>-->
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>

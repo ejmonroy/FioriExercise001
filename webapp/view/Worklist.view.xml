@@ -1,0 +1,45 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic"
+	controllerName="df.com.training.FioriExercise01.controller.Worklist">
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false">
+		<semantic:titleHeading>
+			<Title text="{i18n>worklistTitle}"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<Table id="table" width="auto" items="{ path: '/LogicSet', sorter: { path: 'LogId', descending: false } }"
+				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+						<ToolbarSpacer/>
+						<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search="onSearch" width="auto"></SearchField>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="nameColumn">
+						<Text text="{/#Logic/LogId/@sap:label}" id="nameColumnTitle"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<ObjectHeader xmlns="sap.m" number="{ActiveCount}" numberUnit="{i18n>worklistObjectUnit}" id="header0" title="{LogDesc} ({LogId})"
+								intro="{RicefId}">
+								<attributes>
+									<ObjectAttribute id="attribute0" text="{ActiveCount} out of {ParamCount}" title="{/#Logic/ActiveCount/@sap:label}"/>
+								</attributes>
+								<statuses>
+									<ProgressIndicator xmlns="sap.m" percentValue="{=${ActiveCount} * 100 / ${ParamCount}}" id="indicator0" displayOnly="true" showValue="false"
+										state="{=${ActiveCount} === 0 ? 'None':'Success'}"/>
+								</statuses>
+							</ObjectHeader>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+	</semantic:SemanticPage>
+</mvc:View>
